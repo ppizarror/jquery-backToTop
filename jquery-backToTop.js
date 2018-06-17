@@ -39,11 +39,11 @@
             container: $('body'),               // Container of the object
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
-            height: 35,                         // Height of the button (px), not all themes support this
+            height: 70,                         // Height of the button (px), not all themes support this
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
             right: 20,                          // Right fixed position (px), not all themes support this
             theme: 'default',                   // Theme of the button
-            width: 35,                          // Width of the button (px), not all themes support this
+            width: 70,                          // Width of the button (px), not all themes support this
             zIndex: 999,                        // z-Index of the div
         };
         this._options = $.extend(_defaults, options);
@@ -122,7 +122,7 @@
             /**
              * Generates CSS theme name
              */
-            this._actualTheme = 'jquery-back-to-top-' + theme + '-default';
+            this._actualTheme = 'jquery-back-to-top-theme-' + theme;
 
             /**
              * Apply theme class
@@ -171,6 +171,28 @@
         };
 
         /**
+         * Opens the button
+         * @function
+         * @since 0.0.6
+         */
+        this.show = function () {
+            this._obj.removeClass(this._actualEffect.off);
+            this._obj.addClass(this._actualEffect.on);
+            self._opened = true;
+        };
+
+        /**
+         * Hide the button
+         * @function
+         * @since 0.0.6
+         */
+        this.hide = function () {
+            this._obj.removeClass(this._actualEffect.on);
+            this._obj.addClass(this._actualEffect.off);
+            self._opened = false;
+        };
+
+        /**
          * Check window scroll, if scrolled px is greater than options then open, otherwise close
          * @function
          * @private
@@ -188,10 +210,11 @@
              */
             // noinspection JSValidateTypes
             if ($(window).scrollTop() > self._options.pxToTrigger) { // Open
+                if (this._opened) return;
+                self.show();
             } else { // Close
-                $back.fadeOut('slow');
-                $back.removeClass('back-to-top-on');
-                $back.addClass('back-to-top-off');
+                if (!this._opened) return;
+                self.hide();
             }
 
         };

@@ -11,13 +11,17 @@ None effect
 -------------------------------------------------------------------------------
  */
 .jquery-back-to-top-effect-none-on {
+    -webkit-animation: jquery-back-to-top-fadein .4s ease-in;
     animation-iteration-count: 1;
     animation: jquery-back-to-top-fadein .4s ease-in;
+    opacity: 1;
 }
 
 .jquery-back-to-top-effect-none-off {
+    -webkit-animation: jquery-back-to-top-fadeout .4s ease-in;
     animation-iteration-count: 1;
-    animation: jquery-back-to-top-fadeout .4s ease-out;
+    animation: jquery-back-to-top-fadeout .4s ease-in;
+    opacity: 0;
 }
 
 /**
