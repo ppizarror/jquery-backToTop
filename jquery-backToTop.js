@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.0.8
+ * @version 0.1.0
  */
 
 ;(function (factory) {
@@ -29,14 +29,21 @@
     let _BackToTop = function (options) {
 
         /**
+         * Saves body selector
+         * @type {jQuery | JQuery | HTMLElement}
+         * @private
+         */
+        this._body = $('body');
+
+        /**
          * Default options
          * @private
          * @since 0.0.1
          */
         let _defaults = {
-            backgroundColor: '#5d3d7a',         // Color of the backToTop, not all themes support this
+            backgroundColor: '#5d5d5d',         // Color of the backToTop, not all themes support this
             bottom: 20,                         // Bottom fixed position (px)
-            container: $('body'),               // Container of the object
+            container: this._body,              // Container of the object
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
             height: 70,                         // Height of the button (px), not all themes support this
@@ -92,8 +99,13 @@
             off: '',
             on: '',
         };
-        
-        this._body = $('body');
+
+        /**
+         * Indicates that position is fixed, used for 'body' container
+         * @type {boolean}
+         * @private
+         */
+        this._fixed = false;
 
         /**
          * Saves pointer to object
@@ -157,6 +169,13 @@
                 'width': this._options.width + 'px',
                 'z-index': this._options.zIndex,
             });
+
+            // Set button position
+            if (!this._fixed) {
+                this._obj.css('position', 'sticky');
+            } else {
+                this._obj.css('position', 'fixed');
+            }
 
         };
 
@@ -302,6 +321,15 @@
             let $id = this._randomID();
             $(this._options.container).append('<div id="' + $id + '" class="jquery-back-to-top"></div>');
             self._obj = $('#' + $id);
+
+            /**
+             * If container is body changes to window
+             */
+            if (this._options.container.get(0) === this._body.get(0)) {
+                console.log('kk');
+                self._options.container = $(window);
+                self._fixed = true; // fixed instead of sticky
+            }
 
             /**
              * Apply theme and effect
