@@ -1,7 +1,7 @@
 /**
  * jquery-backToTop
  *
- * @licence MIT
+ * @license MIT
  * @author Pablo Pizarro @ppizarror.com
  * @version 0.1.3
  */
