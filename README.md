@@ -20,7 +20,9 @@ var $button = $.backToTop({options});
 | enabled | boolean | true | BackToTop enabled |
 | height | number | 70 | Height of the button (px) |
 | icon | string | "fas fa-chevron-up" | Font-awesome icon |
+| left | number | 20 | Left margin (px) when divFloat=*left* |
 | pxToTrigger | number | 600 | Scroll px to trigger |
+| right | number | 20 | Right margin (px) when divFloat=*right* |
 | scrollAnimation | number | 0 | Scroll animation |
 | **theme** | string | "default" | Theme of the button |
 | width | number | 70 | Width of the button |
