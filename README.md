@@ -1,5 +1,16 @@
 # jquery-backToTop
-Fully customizable jquery back to top button.
+Fully customizable jQuery back to top button.
+
+## Setup
+
+Include both ``` jquery-backToTop.min.js ``` and ``` jquery-backToTop.min.css ``` in your document after including jQuery.
+
+```html
+<script src="jquery-backToTop.min.js"></script>
+<link href="jquery-backToTop.min.css" type="text/css" rel="stylesheet" media="screen">
+```
+
+Note: Some themes use **font-awesome** theme [https://fontawesome.com/get-started].
 
 ## Usage
 
