@@ -37,9 +37,7 @@
 
 <!-- Body back-to-top -->
 <script>
-    let button = $.backToTop({
-        effect: 'spin'
-    });
+    let button = $.backToTop();
     button.hide(true);
 </script>
 
@@ -52,7 +50,7 @@
 <script>
     $.backToTop({
         container: $('.inner'),
-        effect: 'hide',
+        effect: 'spin-inverse',
         height: 50,
         theme: 'fawesome',
         width: 50,

@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.2
+ * @version 0.1.3
  */
 
 ;(function (factory) {
@@ -23,7 +23,7 @@
      * BackToTop class
      *
      * @class
-     * @param {object} options - Initial creation options
+     * @param {object=} options - Initial creation options
      * @private
      */
     let _BackToTop = function (options) {
