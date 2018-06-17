@@ -3,7 +3,7 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.3
+ * @version 0.1.5
  */
 
 ;(function (factory) {
@@ -27,6 +27,13 @@
      * @private
      */
     let _BackToTop = function (options) {
+
+        /**
+         * Version
+         * @type {string}
+         * @private
+         */
+        this._version = '0.1.5';
 
         /**
          * Saves body selector
