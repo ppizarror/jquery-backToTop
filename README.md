@@ -11,18 +11,18 @@ var $button = $.backToTop({options});
 
 | Option | Type | Default | Description |
 | :-:|:-:|:-:|:--|
-| backgroundColor | string | <span style="color:#085910">'#5d5d5d'</span> | Background color of the backToTop |
-| bottom | number | 20 | Bottom position (px) |
-| color | string | <span style="color:#085910">'#ffffff'</span> | Text color |
-| container | jQuery | $(<span style="color:#085910">'body'</span>) | Container selector |
-| divFloat | string | <span style="color:#085910">'right'</span> |L/R float position |
-| **effect** | string | <span style="color:#085910">'none'</span> | Show/Hide effect |
+| backgroundColor | string | '#5d5d5d' | Background color of the backToTop |
+| bottom | int | 20 | Bottom position (px) |
+| color | string | '#ffffff' | Text color |
+| container | jQuery | $('body') | Container selector |
+| divFloat | string | 'right' |L/R float position |
+| **effect** | string | 'none' | Show/Hide effect |
 | enabled | boolean | true | BackToTop enabled |
 | height | number | 70 | Height of the button (px) |
-| icon | string | <span style="color:#085910">'fas fa-chevron-up'</span> | Font-awesome icon |
+| icon | string | 'fas fa-chevron-up' | Font-awesome icon |
 | pxToTrigger | number | 600 | Scroll px to trigger |
 | scrollAnimation | number | 0 | Scroll animation |
-| **theme** | string | <span style="color:#085910">'default'</span> | Theme of the button |
+| **theme** | string | 'default' | Theme of the button |
 | width | number | 70 | Width of the button |
 | zIndex | number | 999 | z-Index of the button |
 
