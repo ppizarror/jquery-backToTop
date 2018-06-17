@@ -6,10 +6,77 @@ jquery-backToTop main classes
  */
 
 /**
+-------------------------------------------------------------------------------
 Main class
+-------------------------------------------------------------------------------
  */
 .jquery-back-to-top {
-    display: none;
+    display: block;
+    opacity: 0;
     position: fixed;
     text-indent: -9999px;
+}
+
+/**
+-------------------------------------------------------------------------------
+Fade-in CSS implementation
+-------------------------------------------------------------------------------
+ */
+@-moz-keyframes jquery-back-to-top-fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes jquery-back-to-top-fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes jquery-back-to-top-fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/**
+-------------------------------------------------------------------------------
+Fade-out CSS implementation
+-------------------------------------------------------------------------------
+ */
+@-moz-keyframes jquery-back-to-top-fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes jquery-back-to-top-fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes jquery-back-to-top-fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

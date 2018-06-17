@@ -12,10 +12,12 @@ None effect
  */
 .jquery-back-to-top-effect-none-on {
     animation-iteration-count: 1;
+    animation: jquery-back-to-top-fadein .4s ease-in;
 }
 
 .jquery-back-to-top-effect-none-off {
     animation-iteration-count: 1;
+    animation: jquery-back-to-top-fadeout .4s ease-out;
 }
 
 /**

@@ -34,15 +34,17 @@
          * @since 0.0.1
          */
         let _defaults = {
-            autoOpen: true,             // Open back-to-top when created
-            bottom: 20,                 // Bottom fixed position (px)
-            container: $('body'),       // Container of the object
-            effect: 'none',             // Effect of the button
-            height: 35,                 // Height of the button (px)
-            right: 20,                  // Right fixed position (px)
-            theme: 'default',           // Theme of the button
-            width: 35,                  // Width of the button (px)
-            zIndex: 999,                // z-Index of the div
+            backgroundColor: '#5d3d7a',         // Color of the backToTop, not all themes support this
+            bottom: 20,                         // Bottom fixed position (px)
+            container: $('body'),               // Container of the object
+            effect: 'none',                     // Effect of the button
+            enabled: true,                      // Back-to-top enabled when created
+            height: 35,                         // Height of the button (px), not all themes support this
+            pxToTrigger: 600,                   // Scroll px to trigger the backToTop
+            right: 20,                          // Right fixed position (px), not all themes support this
+            theme: 'default',                   // Theme of the button
+            width: 35,                          // Width of the button (px), not all themes support this
+            zIndex: 999,                        // z-Index of the div
         };
         this._options = $.extend(_defaults, options);
 
@@ -61,6 +63,14 @@
          * @since 0.0.1
          */
         this._opened = false;
+
+        /**
+         * Indicates that the button is enabled
+         * @type {boolean}
+         * @private
+         * @since 0.0.4
+         */
+        this._enabled = false;
 
         /**
          * Actual button theme
@@ -117,6 +127,40 @@
              */
             this._obj.addClass(this._actualTheme);
 
+            /**
+             * Defines default styles (width,size,color,etc)
+             */
+            this._obj.css({
+                'background-color': this._options.backgroundColor,
+                'bottom': this._options.bottom + 'px',
+                'height': this._options.height + 'px',
+                'right': this._options.right + 'px',
+                'width': this._options.width + 'px',
+                'z-index': this._options.zIndex,
+            });
+
+        };
+
+        /**
+         * Init main scroll event
+         * @function
+         * @private
+         */
+        this._initEvent = function () {
+            $(window).off('scroll.backToTop');
+            $(window).on('scroll.backToTop', function () {
+                location.pathname.replace(/^\//, '');
+                // noinspection JSValidateTypes
+                if ($(window).scrollTop() > self._options.pxToTrigger) {
+                    $back.fadeIn('slow');
+                    $back.removeClass('back-to-top-off');
+                    $back.addClass('back-to-top-on');
+                } else {
+                    $back.fadeOut('slow');
+                    $back.removeClass('back-to-top-on');
+                    $back.addClass('back-to-top-off');
+                }
+            });
         };
 
         /**
