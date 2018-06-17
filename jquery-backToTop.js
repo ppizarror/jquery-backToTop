@@ -179,8 +179,8 @@
             /**
              * Create class name
              */
-            this._actualEffect.on = 'jquery-back-to-top-effect-' + effect + '-on';
-            this._actualEffect.off = 'jquery-back-to-top-effect-' + effect + '-off';
+            this._actualEffect.on = 'jquery-back-to-top-status-on jquery-back-to-top-effect-' + effect + '-on';
+            this._actualEffect.off = 'jquery-back-to-top-status-off jquery-back-to-top-effect-' + effect + '-off';
 
         };
 
@@ -190,7 +190,7 @@
          * @param {string} effect - Effect name
          * @since 0.0.6
          */
-        this.changeTheme = function (effect) {
+        this.changeEffect = function (effect) {
             this._options.effect = effect;
             this._applyEffect(effect);
         };
