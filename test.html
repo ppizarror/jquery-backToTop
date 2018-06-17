@@ -18,14 +18,37 @@
         body {
             height: 10000px;
         }
+
+        .inner {
+            background-color: azure;
+            max-height: 450px;
+            overflow: auto;
+        }
+
+        .inner-text {
+            height: 3000px;
+        }
     </style>
 </head>
 <body>
 
-<!-- Init jquery-backToTop -->
+<!-- Body back-to-top -->
 <script>
     $.backToTop({
         effect: 'spin'
+    });
+</script>
+
+<div class="inner">
+    <div class="inner-text">
+    </div>
+</div>
+
+<!-- inner back-to-top -->
+<script>
+    $.backToTop({
+        container: $('.inner'),
+        effect: 'hide'
     });
 </script>
 

@@ -92,6 +92,8 @@
             off: '',
             on: '',
         };
+        
+        this._body = $('body');
 
         /**
          * Saves pointer to object
@@ -100,6 +102,18 @@
          * @since 0.0.1
          */
         let self = this;
+
+        /**
+         * Generates safe random ID, https://stackoverflow.com/a/2117523
+         * @function
+         * @returns {string}
+         */
+        this._randomID = function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        };
 
         /**
          * Apply a theme to the button
@@ -235,12 +249,11 @@
             /**
              * Open-Close depending of the scroll
              */
-            // noinspection JSValidateTypes
-            if ($(window).scrollTop() > self._options.pxToTrigger) { // Open
-                if (this._opened) return;
+            if (self._options.container.scrollTop() > self._options.pxToTrigger) { // Open
+                if (self._opened) return;
                 self.show();
             } else { // Close
-                if (!this._opened) return;
+                if (!self._opened) return;
                 self.hide();
             }
 
@@ -254,11 +267,16 @@
         this._initEvent = function () {
 
             /**
+             * Generates event ID
+             */
+            let $id = this._randomID();
+
+            /**
              * Apply window scroll event
              */
-            $(window).off('scroll.backToTop');
-            $(window).on('scroll.backToTop', function () {
+            self._options.container.on('scroll.' + $id, function () {
                 self._checkScroll();
+                console.log(self._options.container.scrollTop());
             });
 
             /**
@@ -276,13 +294,14 @@
          * Creates DOM object
          */
         // noinspection JSJQueryEfficiency
-        if ($('#back-to-top-container').length === 0) {
+        if ($(this._options.container).find('.back-to-top-container').length === 0) {
 
             /**
              * Creates object
              */
-            $(this._options.container).append('<div id="back-to-top-container" class="jquery-back-to-top"></div>');
-            self._obj = $('#back-to-top-container');
+            let $id = this._randomID();
+            $(this._options.container).append('<div id="' + $id + '" class="jquery-back-to-top"></div>');
+            self._obj = $('#' + $id);
 
             /**
              * Apply theme and effect

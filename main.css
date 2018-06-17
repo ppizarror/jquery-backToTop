@@ -14,7 +14,7 @@ Main class
     cursor: pointer;
     display: block;
     opacity: 0;
-    position: fixed;
+    position: sticky;
     text-indent: -9999px;
 }
 
