@@ -26,15 +26,6 @@ var $button = $.backToTop({options});
 | width | number | 70 | Width of the button |
 | zIndex | number | 999 | z-Index of the button |
 
-
-### API
-
-- Enable/disable the button
-
->```javascript
->var $button = $.backToTop({options});
->```
-
 ### Avaiable themes
 
 - default
@@ -48,11 +39,50 @@ var $button = $.backToTop({options});
 - spin-inverse
 - zoom
 
-### TO-DO
+### API
+
+- Enable the button
+
+>```javascript
+>$button.enable(status=boolean, disableEffect=boolean);
+>```
+
+- Show button
+
+>```javascript
+>$button.show(disableEffect=boolean);
+>```
+
+- Hide button
+
+>```javascript
+>$button.hide(disableEffect=boolean);
+>```
+
+- Toggle button
+
+>```javascript
+>$button.toggle(disableEffect=boolean);
+>```
+
+- Change theme
+
+>```javascript
+>$button.changeTheme(theme);
+>```
+
+- Change effect
+
+>```javascript
+>$button.changeEffect(effect);
+>```
+
+## TO-DO
 
 - Create a nice website for the repo
 - More themes
 - More effects
+- Fix this README (?)
 
 ## License
 This project is licensed under MIT [https://opensource.org/licenses/MIT]

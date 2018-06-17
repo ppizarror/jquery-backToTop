@@ -3,7 +3,7 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.6
+ * @version 0.1.7
  */
 
 ;(function (factory) {
@@ -32,7 +32,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.1.6';
+        this._version = '0.1.7';
 
         /**
          * Saves body selector
@@ -198,6 +198,7 @@
         this.changeTheme = function (theme) {
             this._options.theme = theme;
             this._applyTheme(theme);
+            this.show(true);
         };
 
         /**
@@ -236,6 +237,7 @@
         this.changeEffect = function (effect) {
             this._options.effect = effect;
             this._applyEffect(effect);
+            this.show(true);
         };
 
         /**
@@ -293,7 +295,8 @@
          */
         this.enable = function (status, disableEffect) {
             this._enabled = status;
-            if (!this._enabled && this._opened) this.hide(disableEffect)
+            if (!this._enabled && this._opened) this.hide(disableEffect);
+            if (this._enabled && !this._options) this.show(disableEffect);
         };
 
         /**
