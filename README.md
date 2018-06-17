@@ -11,18 +11,18 @@ var $button = $.backToTop({options});
 
 | Option | Type | Default | Description |
 | :-:|:-:|:-:|:--|
-| backgroundColor | string | '#5d5d5d' | Background color of the backToTop |
-| bottom | int | 20 | Bottom position (px) |
-| color | string | '#ffffff' | Text color |
-| container | jQuery | $('body') | Container selector |
-| divFloat | string | 'right' |L/R float position |
-| **effect** | string | 'none' | Show/Hide effect |
+| backgroundColor | string | "#5D5D5D" | Background color of the backToTop |
+| bottom | number | 20 | Bottom position (px) |
+| color | string | "#FFFFFF" | Text color |
+| container | jQuery | $("body") | Container selector |
+| divFloat | string | "right" | Float position (left,right) |
+| **effect** | string | "none" | Show/Hide effect |
 | enabled | boolean | true | BackToTop enabled |
 | height | number | 70 | Height of the button (px) |
-| icon | string | 'fas fa-chevron-up' | Font-awesome icon |
+| icon | string | "fas fa-chevron-up" | Font-awesome icon |
 | pxToTrigger | number | 600 | Scroll px to trigger |
 | scrollAnimation | number | 0 | Scroll animation |
-| **theme** | string | 'default' | Theme of the button |
+| **theme** | string | "default" | Theme of the button |
 | width | number | 70 | Width of the button |
 | zIndex | number | 999 | z-Index of the button |
 

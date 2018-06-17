@@ -31,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.1.8';
+        this._version = '0.2.0';
 
         /**
          * Saves body selector
@@ -46,15 +46,16 @@
          * @since 0.0.1
          */
         let _defaults = {
-            backgroundColor: '#5d5d5d',         // [theme] Background color of the backToTop
+            backgroundColor: '#5D5D5D',         // [theme] Background color of the backToTop
             bottom: 20,                         // Bottom position (px)
-            color: '#ffffff',                   // [theme] Text color
+            color: '#FFFFFF',                   // [theme] Text color
             container: this._body,              // Container of the object
             divFloat: 'right',                  // Float left,right
             effect: 'none',                     // Effect of the button
             enabled: true,                      // backToTop enabled when created
             height: 70,                         // Height of the button (px)
             icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
+            left: 20,                           // Left fixed position (px)
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
             right: 20,                          // Right fixed position (px)
             scrollAnimation: 0,                 // Scroll animation
@@ -79,14 +80,6 @@
          * @since 0.0.1
          */
         this._opened = false;
-
-        /**
-         * Indicates that the button is enabled
-         * @type {boolean}
-         * @private
-         * @since 0.0.4
-         */
-        this._enabled = this._options.enabled;
 
         /**
          * Actual button theme
@@ -131,6 +124,29 @@
                 let r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
+        };
+
+        /**
+         * Converts to number
+         * @function
+         * @param {number | string} n - Number
+         * @private
+         * @since 0.2.0
+         * @returns {number}
+         */
+        this._parseNumber = function (n) {
+            return parseFloat(n.toString());
+        };
+
+        /**
+         * Throw warn to console
+         * @function
+         * @param {string} msg - Console warning message
+         * @private
+         * @since 0.2.0
+         */
+        this._warn = function (msg) {
+            console.warn('jquery-backToTop v' + this._version + ': ' + msg.toString());
         };
 
         /**
@@ -179,7 +195,18 @@
                 'z-index': this._options.zIndex,
             });
 
-            // Set button position
+            /**
+             * Apply lateral margin
+             */
+            if (this._options.divFloat === 'right') {
+                this._obj.css('right', this._options.right + 'px')
+            } else {
+                this._obj.css('left', this._options.left + 'px')
+            }
+
+            /**
+             * Set button position
+             */
             if (!this._fixed) {
                 this._obj.css('position', 'sticky');
             } else {
@@ -197,11 +224,12 @@
         this.changeTheme = function (theme) {
             this._options.theme = theme;
             this._applyTheme(theme);
-            this.show(true);
+            if (this._opened) this.show(true);
         };
 
         /**
          * Apply effect
+         * @function
          * @param {string} effect - Effect name
          * @private
          * @since 0.0.5
@@ -236,7 +264,7 @@
         this.changeEffect = function (effect) {
             this._options.effect = effect;
             this._applyEffect(effect);
-            this.show(true);
+            if (this._opened) this.show(true);
         };
 
         /**
@@ -293,9 +321,9 @@
          * @since 0.1.1
          */
         this.enable = function (status, disableEffect) {
-            this._enabled = status;
-            if (!this._enabled && this._opened) this.hide(disableEffect);
-            if (this._enabled && !this._options) this.show(disableEffect);
+            this._options.enabled = status;
+            if (!this._options.enabled && this._opened) this.hide(disableEffect);
+            if (this._options.enabled && !this._options) this.show(disableEffect);
         };
 
         /**
@@ -309,7 +337,7 @@
             /**
              * Object is disabled
              */
-            if (!self._enabled) return;
+            if (!self._options.enabled) return;
 
             /**
              * Open-Close depending of the scroll
@@ -363,8 +391,37 @@
         /**
          * Init
          */
-        // noinspection JSJQueryEfficiency
         if ($(this._options.container).find('.back-to-top-container').length === 0) {
+
+            /**
+             * Parse input
+             */
+            this._options.bottom = this._parseNumber(this._options.bottom);
+            this._options.height = this._parseNumber(this._options.height);
+            this._options.left = this._parseNumber(this._options.left);
+            this._options.pxToTrigger = Math.max(0, this._parseNumber(this._options.pxToTrigger));
+            this._options.right = this._parseNumber(this._options.right);
+            this._options.scrollAnimation = Math.max(0, this._parseNumber(this._options.scrollAnimation));
+            this._options.width = this._parseNumber(this._options.width);
+            this._options.zIndex = this._parseNumber(this._options.zIndex);
+
+            /**
+             * Check that parent exists, if not uses body
+             */
+            if (!(this._options.container instanceof jQuery) || this._options.container.length === 0) {
+                this._warn('Container is not jQuery instance or it\'s empty, using container=body and enabled=false');
+                this._options.container = this._body;
+                this._options.enabled = false;
+            }
+
+            /**
+             * Check that divFloat is correct
+             */
+            this._options.divFloat = this._options.divFloat.toLowerCase();
+            if (['left', 'right'].indexOf(this._options.divFloat) === -1) {
+                this._warn('divFloat=' + this._options.divFloat + ' parameter is not correct. Valid=left,right. Using default parameter=right');
+                this._options.divFloat = 'right';
+            }
 
             /**
              * Creates object
