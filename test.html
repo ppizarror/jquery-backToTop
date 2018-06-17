@@ -35,10 +35,9 @@
 </head>
 <body>
 
-<!-- Body -->
+<!-- Body, default -->
 <script>
-    let button = $.backToTop();
-    button.changeEffect('zoom');
+    $.backToTop();
 </script>
 
 <div class="inner">
@@ -48,15 +47,14 @@
 
 <!-- Scrollable div -->
 <script>
-    $.backToTop({
+    let $button = $.backToTop({
         backgroundColor: '#846990',
         container: $('.inner'),
         effect: 'spin-inverse',
-        height: 50,
         scrollAnimation: 400,
         theme: 'fawesome',
-        width: 50,
     });
+    $button.resize(50, 50);
 </script>
 
 </body>

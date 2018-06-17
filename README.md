@@ -27,7 +27,7 @@ var $button = $.backToTop({options});
 | color | string | "#FFFFFF" | Text color |
 | container | jQuery | $("body") | Container selector |
 | divFloat | string | "right" | Float position (left,right) |
-| **effect** | string | "none" | Show/Hide effect |
+| **effect** | string | "spin" | Show/Hide effect |
 | enabled | boolean | true | BackToTop enabled |
 | height | number | 70 | Height of the button (px) |
 | icon | string | "fas fa-chevron-up" | Font-awesome icon |
@@ -58,6 +58,12 @@ var $button = $.backToTop({options});
 
 >```javascript
 >$button.enable(status=boolean, disableEffect=boolean);
+>```
+
+- Resize the button
+
+>```javascript
+>$button.resize(width, height);
 >```
 
 - Show button

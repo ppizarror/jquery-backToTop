@@ -31,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.2.0';
+        this._version = '0.2.1';
 
         /**
          * Saves body selector
@@ -51,7 +51,7 @@
             color: '#FFFFFF',                   // [theme] Text color
             container: this._body,              // Container of the object
             divFloat: 'right',                  // Float left,right
-            effect: 'none',                     // Effect of the button
+            effect: 'spin',                     // Effect of the button
             enabled: true,                      // backToTop enabled when created
             height: 70,                         // Height of the button (px)
             icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
@@ -188,12 +188,11 @@
                 'bottom': this._options.bottom + 'px',
                 'color': this._options.color,
                 'float': this._options.divFloat,
-                'height': this._options.height + 'px',
-                'line-height': this._options.height + 'px',
                 'right': this._options.right + 'px',
                 'width': this._options.width + 'px',
                 'z-index': this._options.zIndex,
             });
+            this.resize(this._options.width, this._options.height);
 
             /**
              * Apply lateral margin
@@ -213,6 +212,21 @@
                 this._obj.css('position', 'fixed');
             }
 
+        };
+
+        /**
+         * Resize button
+         * @function
+         * @param {number} w - Width (px)
+         * @param {number} h - Height(px)
+         * @since 0.2.1
+         */
+        this.resize = function (w, h) {
+            this._obj.css({
+                'height': this._parseNumber(h) + 'px',
+                'line-height': this._parseNumber(h) + 'px',
+                'width': this._parseNumber(w) + 'px',
+            });
         };
 
         /**
@@ -397,12 +411,10 @@
              * Parse input
              */
             this._options.bottom = this._parseNumber(this._options.bottom);
-            this._options.height = this._parseNumber(this._options.height);
             this._options.left = this._parseNumber(this._options.left);
             this._options.pxToTrigger = Math.max(0, this._parseNumber(this._options.pxToTrigger));
             this._options.right = this._parseNumber(this._options.right);
             this._options.scrollAnimation = Math.max(0, this._parseNumber(this._options.scrollAnimation));
-            this._options.width = this._parseNumber(this._options.width);
             this._options.zIndex = this._parseNumber(this._options.zIndex);
 
             /**
