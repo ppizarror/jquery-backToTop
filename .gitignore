@@ -1,2 +1,5 @@
 # Webstorm files
 .idea/
+
+# Ignore utilitary files
+jquery-3.3.1.min.js
