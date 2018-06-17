@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.1
+ * @version 0.1.2
  */
 
 ;(function (factory) {
