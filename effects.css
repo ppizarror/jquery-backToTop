@@ -35,7 +35,7 @@ Fade effect
 
 /**
 -------------------------------------------------------------------------------
-Spin - Fade effect
+Spin+Fade effect
 -------------------------------------------------------------------------------
  */
 .jquery-back-to-top-effect-spin-on {
@@ -112,7 +112,7 @@ Spin effect - off
 
 /**
 -------------------------------------------------------------------------------
-Spin inverse - Fade effect
+Spin+Fade inverse effect
 -------------------------------------------------------------------------------
  */
 .jquery-back-to-top-effect-spin-inverse-on {
@@ -128,7 +128,7 @@ Spin inverse - Fade effect
 }
 
 /**
-Spin effect - on
+Spin inverse effect - on
  */
 @-moz-keyframes jquery-back-to-top-effect-kf-spin-inverse-180p {
     from {
@@ -158,7 +158,7 @@ Spin effect - on
 }
 
 /**
-Spin effect - off
+Spin inverse effect - off
  */
 @-moz-keyframes jquery-back-to-top-effect-kf-spin-inverse-180n {
     from {

@@ -3,7 +3,6 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.7
  */
 
 ;(function (factory) {
@@ -32,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.1.7';
+        this._version = '0.1.8';
 
         /**
          * Saves body selector

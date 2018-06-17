@@ -82,7 +82,6 @@ var $button = $.backToTop({options});
 - Create a nice website for the repo
 - More themes
 - More effects
-- Fix this README (?)
 
 ## License
 This project is licensed under MIT [https://opensource.org/licenses/MIT]
