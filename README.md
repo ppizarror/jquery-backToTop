@@ -32,8 +32,8 @@ var $button = $.backToTop({options});
 - Enable/disable the button
 
 >```javascript
-var $button = $.backToTop({options});
-```
+>var $button = $.backToTop({options});
+>```
 
 ### Avaiable themes
 
