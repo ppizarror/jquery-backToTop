@@ -6,3 +6,7 @@ jquery-3.3.1.min.js
 
 # Dist other files
 dist/*.zip
+
+# Root min files
+*.min.js
+*.min.css
