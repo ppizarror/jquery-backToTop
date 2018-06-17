@@ -13,7 +13,6 @@ Main class
 .jquery-back-to-top {
     cursor: pointer;
     display: block;
-    float: right;
     opacity: 0;
     text-indent: -9999px;
 }

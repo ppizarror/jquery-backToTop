@@ -47,6 +47,7 @@
             container: this._body,              // Container of the object
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
+            float: 'right',                     // Float left,right
             height: 70,                         // Height of the button (px)
             onClick: function () {              // Function that is called when button is pressed
                 $(window).scrollTop(0);
@@ -165,6 +166,8 @@
             this._obj.css({
                 'background-color': this._options.backgroundColor,
                 'bottom': this._options.bottom + 'px',
+                'color': this._options.color,
+                'float': this._options.float,
                 'height': this._options.height + 'px',
                 'right': this._options.right + 'px',
                 'width': this._options.width + 'px',
