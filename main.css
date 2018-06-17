@@ -1,0 +1,15 @@
+/**
+jquery-backToTop main classes
+
+@licence MIT
+@author Pablo Pizarro @ppizarror.com
+ */
+
+/**
+Main class
+ */
+.jquery-back-to-top {
+    display: none;
+    position: fixed;
+    text-indent: -9999px;
+}

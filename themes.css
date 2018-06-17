@@ -4,3 +4,18 @@ jquery-backToTop themes
 @licence MIT
 @author Pablo Pizarro @ppizarror.com
  */
+
+/**
+Default theme
+ */
+.jquery-back-to-top-theme-default {
+    -moz-border-radius: 35px;
+    -webkit-border-radius: 35px;
+    background: url('up-arrow.png') no-repeat center 43%;
+    border-radius: 40px;
+    bottom: 20px;
+    height: 70px;
+    right: 20px;
+    width: 70px;
+    z-index: 2;
+}
