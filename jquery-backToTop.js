@@ -47,13 +47,13 @@
          * @since 0.0.1
          */
         let _defaults = {
-            backgroundColor: '#5d5d5d',         // [theme] Color of the backToTop
-            bottom: 20,                         // Bottom fixed position (px)
+            backgroundColor: '#5d5d5d',         // [theme] Background color of the backToTop
+            bottom: 20,                         // Bottom position (px)
             color: '#ffffff',                   // [theme] Text color
             container: this._body,              // Container of the object
             divFloat: 'right',                  // Float left,right
             effect: 'none',                     // Effect of the button
-            enabled: true,                      // Back-to-top enabled when created
+            enabled: true,                      // backToTop enabled when created
             height: 70,                         // Height of the button (px)
             icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
@@ -66,7 +66,7 @@
         this._options = $.extend(_defaults, options);
 
         /**
-         * back-to-top main div
+         * backToTop main div
          * @type {jQuery | HTMLElement | JQuery | null}
          * @private
          * @since 0.0.1
@@ -74,7 +74,7 @@
         this._obj = null;
 
         /**
-         * Indicates the current status of the back-to-top
+         * Indicates the current status of the backToTop
          * @type {boolean}
          * @private
          * @since 0.0.1
