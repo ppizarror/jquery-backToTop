@@ -40,6 +40,9 @@
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
             height: 70,                         // Height of the button (px), not all themes support this
+            onClick: function () {              // Function that is called when button is pressed
+                $(window).scrollTop(0);
+            },
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
             right: 20,                          // Right fixed position (px), not all themes support this
             theme: 'default',                   // Theme of the button
@@ -144,6 +147,17 @@
         };
 
         /**
+         * Public function that changes button theme
+         * @function
+         * @param {string} theme - Theme name
+         * @since 0.0.6
+         */
+        this.changeTheme = function (theme) {
+            this._options.theme = theme;
+            this._applyTheme(theme);
+        };
+
+        /**
          * Apply effect
          * @param {string} effect - Effect name
          * @private
@@ -168,6 +182,17 @@
             this._actualEffect.on = 'jquery-back-to-top-effect-' + effect + '-on';
             this._actualEffect.off = 'jquery-back-to-top-effect-' + effect + '-off';
 
+        };
+
+        /**
+         * Public function that changes button effect
+         * @function
+         * @param {string} effect - Effect name
+         * @since 0.0.6
+         */
+        this.changeTheme = function (effect) {
+            this._options.effect = effect;
+            this._applyEffect(effect);
         };
 
         /**
@@ -225,10 +250,24 @@
          * @private
          */
         this._initEvent = function () {
+
+            /**
+             * Apply window scroll event
+             */
             $(window).off('scroll.backToTop');
             $(window).on('scroll.backToTop', function () {
                 self._checkScroll();
             });
+
+            /**
+             * Button click
+             */
+            this._obj.off('click.backToTop');
+            this._obj.on('click.backToTop', function (e) {
+                e.preventDefault();
+                self._options.onClick();
+            });
+
         };
 
         /**
