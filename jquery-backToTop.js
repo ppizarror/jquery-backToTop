@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.0.5
+ * @version 0.0.8
  */
 
 ;(function (factory) {
@@ -146,6 +146,7 @@
 
         };
 
+        // noinspection JSUnusedGlobalSymbols
         /**
          * Public function that changes button theme
          * @function
@@ -184,6 +185,7 @@
 
         };
 
+        // noinspection JSUnusedGlobalSymbols
         /**
          * Public function that changes button effect
          * @function
