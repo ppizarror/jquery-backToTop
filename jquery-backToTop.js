@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.0.1
+ * @version 0.0.5
  */
 
 ;(function (factory) {
@@ -82,7 +82,6 @@
 
         /**
          * Actual effect theme
-         * @type {string}
          * @private
          * @since 0.0.3
          */
@@ -148,9 +147,26 @@
          * Apply effect
          * @param {string} effect - Effect name
          * @private
-         * @since 0.0.4
+         * @since 0.0.5
          */
         this._applyEffect = function (effect) {
+
+            /**
+             * If button is has not been built returns
+             */
+            if (this._obj === null) return;
+
+            /**
+             * Remove classes if present
+             */
+            if (this._actualEffect.on !== '') this._obj.removeClass(this._actualEffect.on);
+            if (this._actualEffect.off !== '') this._obj.removeClass(this._actualEffect.off);
+
+            /**
+             * Create class name
+             */
+            this._actualEffect.on = 'jquery-back-to-top-effect-' + effect + '-on';
+            this._actualEffect.off = 'jquery-back-to-top-effect-' + effect + '-off';
 
         };
 
@@ -158,6 +174,7 @@
          * Check window scroll, if scrolled px is greater than options then open, otherwise close
          * @function
          * @private
+         * @since 0.0.4
          */
         this._checkScroll = function () {
 
@@ -211,7 +228,12 @@
             /**
              * Set effects
              */
+            this._applyEffect(this._options.effect);
 
+            /**
+             * Init event
+             */
+            this._initEvent();
 
         }
 
