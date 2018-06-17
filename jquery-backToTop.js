@@ -3,7 +3,7 @@
  *
  * @licence MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.0
+ * @version 0.1.1
  */
 
 ;(function (factory) {
@@ -180,7 +180,6 @@
 
         };
 
-        // noinspection JSUnusedGlobalSymbols
         /**
          * Public function that changes button theme
          * @function
@@ -219,7 +218,6 @@
 
         };
 
-        // noinspection JSUnusedGlobalSymbols
         /**
          * Public function that changes button effect
          * @function
@@ -234,23 +232,59 @@
         /**
          * Opens the button
          * @function
+         * @param {boolean=} disableEffect - Open with no efect
          * @since 0.0.6
          */
-        this.show = function () {
+        this.show = function (disableEffect) {
             this._obj.removeClass(this._actualEffect.off);
-            this._obj.addClass(this._actualEffect.on);
+            if (disableEffect) {
+                this._obj.addClass('jquery-back-to-top-status-on');
+            } else {
+                this._obj.addClass(this._actualEffect.on);
+            }
             self._opened = true;
         };
 
         /**
          * Hide the button
          * @function
+         * @param {boolean=} disableEffect - Hide with no efect
          * @since 0.0.6
          */
-        this.hide = function () {
+        this.hide = function (disableEffect) {
             this._obj.removeClass(this._actualEffect.on);
-            this._obj.addClass(this._actualEffect.off);
+            if (disableEffect) {
+                this._obj.addClass('jquery-back-to-top-status-off');
+            } else {
+                this._obj.addClass(this._actualEffect.off);
+            }
             self._opened = false;
+        };
+
+        /**
+         * Toggles the button
+         * @function
+         * @param {boolean=} disableEffect - Disables the effect
+         * @since 0.1.1
+         */
+        this.toggle = function (disableEffect) {
+            if (self._opened) {
+                this.hide(disableEffect);
+            } else {
+                this.show(disableEffect);
+            }
+        };
+
+        /**
+         * Enables/disables the button
+         * @function
+         * @param {boolean} status - true: enables, false: disables
+         * @param {boolean=} disableEffect - Disables the effect
+         * @since 0.1.1
+         */
+        this.enable = function (status, disableEffect) {
+            this._enabled = status;
+            if (!this._enabled && this._opened) this.hide(disableEffect)
         };
 
         /**

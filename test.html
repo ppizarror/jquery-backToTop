@@ -5,8 +5,11 @@
     <title>jquery-backToTop test</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <!-- Imports jQuery -->
-    <script src="jquery-3.3.1.min.js"></script>
+    <!-- Imports dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
     <!-- Imports jquery-backToTop -->
     <script src="jquery-backToTop.js"></script>
@@ -34,9 +37,10 @@
 
 <!-- Body back-to-top -->
 <script>
-    $.backToTop({
+    let button = $.backToTop({
         effect: 'spin'
     });
+    button.hide(true);
 </script>
 
 <div class="inner">
@@ -48,7 +52,9 @@
 <script>
     $.backToTop({
         container: $('.inner'),
-        effect: 'hide'
+        effect: 'hide',
+        height: 50,
+        width: 50,
     });
 </script>
 
