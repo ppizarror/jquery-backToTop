@@ -70,7 +70,7 @@
          * @private
          * @since 0.0.4
          */
-        this._enabled = false;
+        this._enabled = this._options.enabled;
 
         /**
          * Actual button theme
@@ -86,7 +86,10 @@
          * @private
          * @since 0.0.3
          */
-        this._actualEffect = '';
+        this._actualEffect = {
+            off: '',
+            on: '',
+        };
 
         /**
          * Saves pointer to object
@@ -142,6 +145,41 @@
         };
 
         /**
+         * Apply effect
+         * @param {string} effect - Effect name
+         * @private
+         * @since 0.0.4
+         */
+        this._applyEffect = function (effect) {
+
+        };
+
+        /**
+         * Check window scroll, if scrolled px is greater than options then open, otherwise close
+         * @function
+         * @private
+         */
+        this._checkScroll = function () {
+
+            /**
+             * Object is disabled
+             */
+            if (!self._enabled) return;
+
+            /**
+             * Open-Close depending of the scroll
+             */
+            // noinspection JSValidateTypes
+            if ($(window).scrollTop() > self._options.pxToTrigger) { // Open
+            } else { // Close
+                $back.fadeOut('slow');
+                $back.removeClass('back-to-top-on');
+                $back.addClass('back-to-top-off');
+            }
+
+        };
+
+        /**
          * Init main scroll event
          * @function
          * @private
@@ -149,17 +187,7 @@
         this._initEvent = function () {
             $(window).off('scroll.backToTop');
             $(window).on('scroll.backToTop', function () {
-                location.pathname.replace(/^\//, '');
-                // noinspection JSValidateTypes
-                if ($(window).scrollTop() > self._options.pxToTrigger) {
-                    $back.fadeIn('slow');
-                    $back.removeClass('back-to-top-off');
-                    $back.addClass('back-to-top-on');
-                } else {
-                    $back.fadeOut('slow');
-                    $back.removeClass('back-to-top-on');
-                    $back.addClass('back-to-top-off');
-                }
+                self._checkScroll();
             });
         };
 
@@ -179,6 +207,11 @@
              * Apply theme and effect
              */
             this._applyTheme(this._options.theme);
+
+            /**
+             * Set effects
+             */
+
 
         }
 
