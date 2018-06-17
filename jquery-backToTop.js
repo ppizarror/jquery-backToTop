@@ -3,11 +3,10 @@
  *
  * @license MIT
  * @author Pablo Pizarro @ppizarror.com
- * @version 0.1.5
+ * @version 0.1.6
  */
 
 ;(function (factory) {
-    /* global define, define.amd */
     /** @namespace define.amd */
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module
@@ -33,7 +32,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.1.5';
+        this._version = '0.1.6';
 
         /**
          * Saves body selector
@@ -57,11 +56,9 @@
             enabled: true,                      // Back-to-top enabled when created
             height: 70,                         // Height of the button (px)
             icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
-            onClick: function () {              // Function that is called when button is pressed
-                $(window).scrollTop(0);
-            },
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
             right: 20,                          // Right fixed position (px)
+            scrollAnimation: 0,                 // Scroll animation
             theme: 'default',                   // Theme of the button
             width: 70,                          // Width of the button (px)
             zIndex: 999,                        // z-Index of the div
@@ -350,13 +347,19 @@
             this._obj.off('click.backToTop');
             this._obj.on('click.backToTop', function (e) {
                 e.preventDefault();
-                self._options.onClick();
+                if (self._options.scrollAnimation === 0) {
+                    self._options.container.scrollTop(0);
+                } else {
+                    self._options.container.animate({
+                        scrollTop: 0
+                    }, self._options.scrollAnimation);
+                }
             });
 
         };
 
         /**
-         * Creates DOM object
+         * Init
          */
         // noinspection JSJQueryEfficiency
         if ($(this._options.container).find('.back-to-top-container').length === 0) {
