@@ -17,11 +17,22 @@ Default theme
     border-radius: 50%;
 }
 
+.jquery-back-to-top-theme-default:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.40);
+}
+
 /**
 -------------------------------------------------------------------------------
-Font-awesome chevron theme
+Font-awesome theme
 -------------------------------------------------------------------------------
  */
-.jquery-back-to-top-theme-fachevron {
+.jquery-back-to-top-theme-fawesome {
+    -moz-border-radius: 25%;
+    -webkit-border-radius: 25%;
+    border-radius: 25%;
+    font-size: 150%;
+}
 
+.jquery-back-to-top-theme-fawesome i {
+    display: inline-block;
 }

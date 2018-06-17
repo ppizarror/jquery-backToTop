@@ -14,7 +14,15 @@ Main class
     cursor: pointer;
     display: block;
     opacity: 0;
-    text-indent: -9999px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: clip;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+.jquery-back-to-top i {
+    display: none;
 }
 
 /**

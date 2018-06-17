@@ -45,10 +45,11 @@
             bottom: 20,                         // Bottom fixed position (px)
             color: '#ffffff',                   // [theme] Text color
             container: this._body,              // Container of the object
+            divFloat: 'right',                  // Float left,right
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
-            float: 'right',                     // Float left,right
             height: 70,                         // Height of the button (px)
+            icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
             onClick: function () {              // Function that is called when button is pressed
                 $(window).scrollTop(0);
             },
@@ -167,8 +168,9 @@
                 'background-color': this._options.backgroundColor,
                 'bottom': this._options.bottom + 'px',
                 'color': this._options.color,
-                'float': this._options.float,
+                'float': this._options.divFloat,
                 'height': this._options.height + 'px',
+                'line-height': this._options.height + 'px',
                 'right': this._options.right + 'px',
                 'width': this._options.width + 'px',
                 'z-index': this._options.zIndex,
@@ -356,7 +358,7 @@
              * Creates object
              */
             let $id = this._randomID();
-            $(this._options.container).append('<div id="' + $id + '" class="jquery-back-to-top"></div>');
+            $(this._options.container).append('<div id="' + $id + '" class="jquery-back-to-top"><i class="' + this._options.icon + '"></i></div>');
             self._obj = $('#' + $id);
 
             /**
