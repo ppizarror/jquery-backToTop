@@ -1,2 +1,2 @@
 # jquery-backToTop
-Lightweight, fully customizable jquery back to top button
+Fully customizable jquery back to top button
