@@ -41,19 +41,20 @@
          * @since 0.0.1
          */
         let _defaults = {
-            backgroundColor: '#5d5d5d',         // Color of the backToTop, not all themes support this
+            backgroundColor: '#5d5d5d',         // [theme] Color of the backToTop
             bottom: 20,                         // Bottom fixed position (px)
+            color: '#ffffff',                   // [theme] Text color
             container: this._body,              // Container of the object
             effect: 'none',                     // Effect of the button
             enabled: true,                      // Back-to-top enabled when created
-            height: 70,                         // Height of the button (px), not all themes support this
+            height: 70,                         // Height of the button (px)
             onClick: function () {              // Function that is called when button is pressed
                 $(window).scrollTop(0);
             },
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
-            right: 20,                          // Right fixed position (px), not all themes support this
+            right: 20,                          // Right fixed position (px)
             theme: 'default',                   // Theme of the button
-            width: 70,                          // Width of the button (px), not all themes support this
+            width: 70,                          // Width of the button (px)
             zIndex: 999,                        // z-Index of the div
         };
         this._options = $.extend(_defaults, options);
@@ -295,7 +296,6 @@
              */
             self._options.container.on('scroll.' + $id, function () {
                 self._checkScroll();
-                console.log(self._options.container.scrollTop());
             });
 
             /**
@@ -326,7 +326,6 @@
              * If container is body changes to window
              */
             if (this._options.container.get(0) === this._body.get(0)) {
-                console.log('kk');
                 self._options.container = $(window);
                 self._fixed = true; // fixed instead of sticky
             }
@@ -342,7 +341,7 @@
             this._applyEffect(this._options.effect);
 
             /**
-             * Init event
+             * Init events
              */
             this._initEvent();
 
