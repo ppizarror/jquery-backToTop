@@ -5,5 +5,5 @@
 dist/*.zip
 
 # Root min files
-*.min.js
-*.min.css
+/*.min.js
+/*.min.css
