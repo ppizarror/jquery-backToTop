@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery-backToTop</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="example/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="example/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="example/favicon/favicon-16x16.png">
+    <link rel="manifest" href="example/favicon/manifest.json">
+    <link rel="mask-icon" href="example/favicon/safari-pinned-tab.svg" color="#000000">
+    <link rel="shortcut icon" href="example/favicon/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="Notification.js">
+    <meta name="application-name" content="Notification.js">
+    <meta name="msapplication-config" content="res/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Import dependencies -->
+    <script src="example/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="example/font-awesome-v5/css/fontawesome-all.min.css" media="screen">
+
+    <!-- jquery-backToTop -->
+    <script src="jquery-backToTop.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="themes.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="effects.css" media="screen">
+
+    <!-- Website resources -->
+    <link rel="stylesheet" type="text/css" href="example/example.css" media="screen">
+</head>
+<body>
+
+<!-- Body, default -->
+<script>
+    $.backToTop();
+</script>
+
+<div class="inner">
+    <div class="inner-text">
+        Work in progress ...
+    </div>
+</div>
+
+<!-- Scrollable div -->
+<script>
+    let $button = $.backToTop({
+        backgroundColor: '#846990',
+        container: $('.inner'),
+        effect: 'spin-inverse',
+        scrollAnimation: 400,
+        theme: 'fawesome',
+    });
+    $button.resize(50, 50);
+</script>
+
+</body>
+</html>
