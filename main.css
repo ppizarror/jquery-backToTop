@@ -13,10 +13,10 @@ Main class
 .jquery-back-to-top {
     cursor: pointer;
     display: block;
-    opacity: 0;
     overflow: hidden;
     text-align: center;
     text-overflow: clip;
+    visibility: hidden;
     white-space: nowrap;
     word-wrap: break-word;
 }
@@ -33,11 +33,13 @@ Basic statuses
 .jquery-back-to-top-status-on {
     animation-iteration-count: 1;
     opacity: 1;
+    visibility: visible;
 }
 
 .jquery-back-to-top-status-off {
     animation-iteration-count: 1;
-    opacity: 0;
+    transition: visibility .4s;
+    visibility: hidden;
 }
 
 /**

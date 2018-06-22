@@ -31,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.2.1';
+        this._version = '0.2.2';
 
         /**
          * Saves body selector
@@ -288,13 +288,15 @@
          * @since 0.0.6
          */
         this.show = function (disableEffect) {
-            this._obj.removeClass(this._actualEffect.off);
-            if (disableEffect) {
-                this._obj.addClass('jquery-back-to-top-status-on');
-            } else {
-                this._obj.addClass(this._actualEffect.on);
+            if (self._options.container.scrollTop() > self._options.pxToTrigger) {
+                this._obj.removeClass(this._actualEffect.off);
+                if (disableEffect) {
+                    this._obj.addClass('jquery-back-to-top-status-on');
+                } else {
+                    this._obj.addClass(this._actualEffect.on);
+                }
+                self._opened = true;
             }
-            self._opened = true;
         };
 
         /**
