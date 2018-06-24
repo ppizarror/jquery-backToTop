@@ -31,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.2.2';
+        this._version = '0.2.3';
 
         /**
          * Saves body selector
@@ -105,6 +105,13 @@
          * @private
          */
         this._fixed = false;
+
+        /**
+         * Indicates that the container is $(window)
+         * @type {boolean}
+         * @private
+         */
+        this._isWindowContainer = false;
 
         /**
          * Saves pointer to object
@@ -396,9 +403,13 @@
                 if (self._options.scrollAnimation === 0) {
                     self._options.container.scrollTop(0);
                 } else {
-                    self._options.container.animate({
-                        scrollTop: 0
-                    }, self._options.scrollAnimation);
+                    if (self._isWindowContainer) { // If window container is used
+                        $('html,body').stop().animate({scrollTop: 0}, self._options.scrollAnimation);
+                    } else {
+                        self._options.container.animate({
+                            scrollTop: 0
+                        }, self._options.scrollAnimation);
+                    }
                 }
             });
 
@@ -448,6 +459,7 @@
              * If container is body changes to window
              */
             if (this._options.container.get(0) === this._body.get(0)) {
+                self._isWindowContainer = true;
                 self._options.container = $(window);
                 self._fixed = true; // fixed instead of sticky
             }
