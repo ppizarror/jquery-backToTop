@@ -23,15 +23,15 @@ var $button = $.backToTop({options});
 | Option | Type | Default | Description |
 | :-:|:-:|:-:|:--|
 | backgroundColor | string | "#5D5D5D" | Background color of the backToTop |
-| bottom | number | 20 | Bottom position (px) |
 | color | string | "#FFFFFF" | Text color |
 | container | jQuery | $("body") | Container selector |
-| divFloat | string | "right" | Float position (left,right) |
 | **effect** | string | "spin" | Show/Hide effect |
 | enabled | boolean | true | BackToTop enabled |
 | height | number | 70 | Height of the button (px) |
 | icon | string | "fas fa-chevron-up" | Font-awesome icon |
-| left | number | 20 | Left margin (px) when divFloat=*left* |
+| marginX | number | 20 | Left/right margin (px) |
+| marginY | number | 20 | Bottom/top margin (px) |
+| position | string | "right" | Float position, left/right top/bottom, ex: "bottom right" |
 | pxToTrigger | number | 600 | Scroll px to trigger |
 | right | number | 20 | Right margin (px) when divFloat=*right* |
 | scrollAnimation | number | 0 | Scroll animation |
