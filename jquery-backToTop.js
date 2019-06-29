@@ -475,7 +475,6 @@
                 $pos = ['bottom', 'right'];
             }
 
-            console.log($pos);
             // Check if first or second contains left/right
             if ($pos[0] === 'left' || $pos[0] === 'right') {
                 self._options._positionX = $pos[0];
