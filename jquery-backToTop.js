@@ -31,7 +31,7 @@
          * @type {string}
          * @private
          */
-        this._version = '0.2.3';
+        this._version = '0.2.5';
 
         /**
          * Saves body selector
@@ -46,18 +46,19 @@
          * @since 0.0.1
          */
         let _defaults = {
+            _positionX: '',                     // Position in X axis (internal)
+            _positionY: '',                     // Position in Y axis (internal)
             backgroundColor: '#5D5D5D',         // [theme] Background color of the backToTop
-            bottom: 20,                         // Bottom position (px)
             color: '#FFFFFF',                   // [theme] Text color
             container: this._body,              // Container of the object
-            divFloat: 'right',                  // Float left,right
             effect: 'spin',                     // Effect of the button
             enabled: true,                      // backToTop enabled when created
             height: 70,                         // Height of the button (px)
             icon: 'fas fa-chevron-up',          // [theme] Font-awesome icon
-            left: 20,                           // Left fixed position (px)
+            marginX: 20,                        // Right fixed position (px)
+            marginY: 20,                        // Bottom position (px)
+            position: 'bottom right',           // bottom/top left/right
             pxToTrigger: 600,                   // Scroll px to trigger the backToTop
-            right: 20,                          // Right fixed position (px)
             scrollAnimation: 0,                 // Scroll animation
             theme: 'default',                   // Theme of the button
             width: 70,                          // Width of the button (px)
@@ -192,22 +193,29 @@
              */
             this._obj.css({
                 'background-color': this._options.backgroundColor,
-                'bottom': this._options.bottom + 'px',
                 'color': this._options.color,
-                'float': this._options.divFloat,
-                'right': this._options.right + 'px',
+                'float': this._options._positionX,
                 'width': this._options.width + 'px',
                 'z-index': this._options.zIndex,
             });
             this.resize(this._options.width, this._options.height);
 
             /**
-             * Apply lateral margin
+             * Apply lateral margin in x position
              */
-            if (this._options.divFloat === 'right') {
-                this._obj.css('right', this._options.right + 'px')
+            if (this._options._positionX === 'right') {
+                this._obj.css('right', this._options.marginX + 'px')
             } else {
-                this._obj.css('left', this._options.left + 'px')
+                this._obj.css('left', this._options.marginX + 'px')
+            }
+
+            /**
+             * Apply lateral margin in y position
+             */
+            if (this._options._positionY === 'bottom') {
+                this._obj.css('bottom', this._options.marginY + 'px')
+            } else {
+                this._obj.css('top', this._options.marginY + 'px')
             }
 
             /**
@@ -423,12 +431,31 @@
             /**
              * Parse input
              */
-            this._options.bottom = this._parseNumber(this._options.bottom);
-            this._options.left = this._parseNumber(this._options.left);
-            this._options.pxToTrigger = Math.max(0, this._parseNumber(this._options.pxToTrigger));
-            this._options.right = this._parseNumber(this._options.right);
-            this._options.scrollAnimation = Math.max(0, this._parseNumber(this._options.scrollAnimation));
-            this._options.zIndex = this._parseNumber(this._options.zIndex);
+            try {
+                this._options.marginX = this._parseNumber(this._options.marginX);
+            } catch ($e) {
+                this._warn('marginX parameter not valid');
+            }
+            try {
+                this._options.marginY = this._parseNumber(this._options.marginY);
+            } catch ($e) {
+                this._warn('marginY parameter not valid');
+            }
+            try {
+                this._options.pxToTrigger = Math.max(0, this._parseNumber(this._options.pxToTrigger));
+            } catch ($e) {
+                this._warn('pxToTrigger parameter not valid');
+            }
+            try {
+                this._options.scrollAnimation = Math.max(0, this._parseNumber(this._options.scrollAnimation));
+            } catch ($e) {
+                this._warn('scrollAnimation parameter not valid');
+            }
+            try {
+                this._options.zIndex = this._parseNumber(this._options.zIndex);
+            } catch ($e) {
+                this._warn('zIndex parameter not valid');
+            }
 
             /**
              * Check that parent exists, if not uses body
@@ -440,12 +467,32 @@
             }
 
             /**
-             * Check that divFloat is correct
+             * Check position
              */
-            this._options.divFloat = this._options.divFloat.toLowerCase();
-            if (['left', 'right'].indexOf(this._options.divFloat) === -1) {
-                this._warn('divFloat=' + this._options.divFloat + ' parameter is not correct. Valid=left,right. Using default parameter=right');
-                this._options.divFloat = 'right';
+            let $pos = this._options.position.toLowerCase().split(' ');
+            if ($pos.length !== 2) {
+                this._warn('Position is not valid');
+                $pos = ['bottom', 'right'];
+            }
+
+            console.log($pos);
+            // Check if first or second contains left/right
+            if ($pos[0] === 'left' || $pos[0] === 'right') {
+                self._options._positionX = $pos[0];
+                self._options._positionY = $pos[1];
+            } else {
+                self._options._positionX = $pos[1];
+                self._options._positionY = $pos[0];
+            }
+
+            // Check X and Y are well defined
+            if (!(self._options._positionX === 'left' || self._options._positionX === 'right')) {
+                this._warn('Position in X is not correct (left/right)');
+                self._options._positionX = 'right';
+            }
+            if (!(self._options._positionY === 'bottom' || self._options._positionY === 'top')) {
+                this._warn('Position in Y is not correct (bottom/top)');
+                self._options._positionY = 'bottom';
             }
 
             /**
@@ -462,6 +509,11 @@
                 self._isWindowContainer = true;
                 self._options.container = $(window);
                 self._fixed = true; // fixed instead of sticky
+            } else {
+                if (self._options._positionY === 'top') {
+                    this._warn('Position top inside div is actually not allowed');
+                    self._options._positionY = 'bottom';
+                }
             }
 
             /**
