@@ -1,4 +1,5 @@
 # jquery-backToTop
+
 Fully customizable jQuery back to top button.
 
 ## Setup
@@ -103,7 +104,9 @@ var $button = $.backToTop({options});
 - More effects
 
 ## License
+
 This project is licensed under MIT [https://opensource.org/licenses/MIT]
 
 ## Author
+
 <a href="https://ppizarror.com" title="ppizarror">Pablo Pizarro R.</a> | 2018-2019
