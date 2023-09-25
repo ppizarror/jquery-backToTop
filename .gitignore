@@ -1,5 +1,6 @@
-# Webstorm files
+# IDE
 .idea/
+.vscode/
 
 # Dist other files
 dist/*.zip

@@ -117,10 +117,9 @@
         /**
          * Saves pointer to object
          * @type {_BackToTop}
-         * @private
          * @since 0.0.1
          */
-        let self = this;
+        const self = this;
 
         /**
          * Generates safe random ID, https://stackoverflow.com/a/2117523
